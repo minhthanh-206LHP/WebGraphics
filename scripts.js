@@ -12,7 +12,7 @@ img.onload = function() {
   	Sctx.drawImage(img, 0, 0);
   	img.style.display = 'none';
 };
-importScripts('./sobel.js');
+import './sobel';
 function sobel(img){
 	var imageData = Sctx.getImageData(0,0,img.width,img.height);
 	var sobelData = Sobel(imageData);
