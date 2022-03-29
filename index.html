@@ -53,10 +53,21 @@
 			},false);
 		},false);
 
-		function draw(v,c,w,h) {
+		function draw(v,c,bc,w,h) {
 			if (v.paused || v.ended) return false;
-			c.drawImage(v,0,0,w,h);
-			setTimeout(draw,20,v,c,w,h);
+			bc.drawImage(v,0,0,w,h);
+			var idata = bc.getImageData(0,0,w,h);
+			var data = idata.data;
+
+			for (var i = 0; i < data.length; i += 4) {
+				var lightness = (3*data[i] + 4*data[i+1] + data[i+2])>>>3;
+				data[i] = lightness;
+				data[i+1] = lightness;
+				data[i+2] = lightness;
+			}
+			idata.data = data;
+			c.putImageData(idata,0,0);
+			setTimeout(function() {draw(v,c,bc,w,h);}, 0);
 		}
 	</script>
 	<script src="scripts.js"></script>
