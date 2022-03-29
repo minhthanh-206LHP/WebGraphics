@@ -35,7 +35,7 @@
 	<video id = 'v' controls loop>
 		<source  src ='./WhenIrishPeopleCantSpeakIrish.mp4' type="video/mp4">
 	</video>
-	<canvas id ='videoCanvas' width="640" height="360"></canvas>
+	<canvas id ='videoCanvas' width="64000" height="36000"></canvas>
 	<script>
 		document.addEventListener('DOMContentLoaded',
 		function(){
@@ -43,10 +43,10 @@
 			var canvas = document.getElementById('videoCanvas');
 			var context = canvas.getContext('2d');
 
-			// var cw = Math.floor(canvas.clientWidth / 100);
-			// var ch = Math.floor(canvas.clientHeight / 100);
-			// canvas.width = cw;
-			// canvas.height = ch;
+			var cw = Math.floor(canvas.clientWidth / 100);
+			var ch = Math.floor(canvas.clientHeight / 100);
+			canvas.width = cw;
+			canvas.height = ch;
 
 			v.addEventListener('play',function(){
 				draw(this,context,cw,ch);
