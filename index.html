@@ -93,7 +93,8 @@
 					grayscaleData.push (avg,avg,avg,255);
 				}
 			}
-			c.putImageData(grayscaleData,0,0);
+			var grayscaleImageData = new ImageData(grayscaleData,width,height);
+			c.putImageData(grayscaleImageData,0,0);
 			setTimeout(function(){draw(v,c,bc,w,h);},0);
 		}
 
