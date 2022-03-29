@@ -12,7 +12,7 @@ function invertColor(img)
     var context = canvas.getContext("2d");
 
     context.drawImage(img,0,0);
-    console.log(img.width,img.height);
+    //console.log(img.width,img.height);
     // context.drawImage(img,img.width,0);
     var imageData = context.getImageData(0,0,img.width,img.height);
     var data = imageData.data;
