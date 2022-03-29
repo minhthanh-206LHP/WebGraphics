@@ -21,7 +21,7 @@ function invertColor(img)
         data[i] = 255-data[i];
         data[i+1]=255-data[i+1];
         data[i+2]=255-data[i+2];
-        data[i+3]=255-data[i+3];
+        data[i+3]=255;
     }
     context.putImageData(imageData,img.width,0);
 }
