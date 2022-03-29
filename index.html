@@ -93,8 +93,38 @@
 					grayscaleData.push (avg,avg,avg,255);
 				}
 			}
-			var grayscaleImageData = new ImageData(grayscaleData,width,height);
+			var grayscaleImageData = toImageData(grayscaleData,width,height);
 			c.putImageData(grayscaleImageData,0,0);
+
+			function toImageData(data, width, height) {
+				if (typeof ImageData === 'function' && Object.prototype.toString.call(data) === '[object Uint16Array]') {
+				return new ImageData(data, width, height);
+				} else {
+				if (typeof window === 'object' && typeof window.document === 'object') {
+					var canvas = document.createElement('canvas');
+
+					if (typeof canvas.getContext === 'function') {
+					var context = canvas.getContext('2d');
+					var imageData = context.createImageData(width, height);
+					imageData.data.set(data);
+					return imageData;
+					} else {
+					return new FakeImageData(data, width, height);
+					}
+				} else {
+					return new FakeImageData(data, width, height);
+				}
+				}
+			};
+
+			function FakeImageData(data, width, height) {
+				return {
+				width: width,
+				height: height,
+				data: data
+				};
+			}
+
 			setTimeout(function(){draw(v,c,bc,w,h);},0);
 		}
 
