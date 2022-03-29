@@ -23,19 +23,19 @@
 		<tbody>
 			<tr>
 				<td>
-					<canvas id="Scanvas" width="300" height="227"></canvas>
+					<video id = 'v' controls loop>
+						<source  src ='./WhenIrishPeopleCantSpeakIrish.mp4' type="video/mp4">
+					</video>
 				</td>
 				<td align="center" class="color-cell" id="hovered-color">
-					<canvas id="Neocanvas" width="300" height="227"></canvas>
+					<canvas id ='videoCanvas' width="64000" height="36000"></canvas>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<video id = 'v' controls loop>
-		<source  src ='./WhenIrishPeopleCantSpeakIrish.mp4' type="video/mp4">
-	</video>
-	<canvas id ='videoCanvas' width="64000" height="36000"></canvas>
+	
+	
 	<script>
 		document.addEventListener('DOMContentLoaded',
 		function(){

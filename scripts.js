@@ -9,9 +9,9 @@ var NeoCtx = NeoCanvas.getContext('2d');
 //NeoCtx.drawImage(img,0,0);
 
 img.onload = function() {
-	Sctx.drawImage(img, 0, 0);
-  	img.style.display = 'none';
-	sobel(this);
+	//Sctx.drawImage(img, 0, 0);
+  	//img.style.display = 'none';
+	//sobel(this);
 };
 
 function sobel(img){
