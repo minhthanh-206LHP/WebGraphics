@@ -132,7 +132,7 @@
 						(kernelY[2][1] * pixelAt(x, y + 1)) +
 						(kernelY[2][2] * pixelAt(x + 1, y + 1))
 					);
-					var magitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY)) >>> 0;
+					var magitude = (pixelX + pixelY) >>> 1;
 					sobelData.push(magitude,magitude,magitude,255);
 				}
 			}
