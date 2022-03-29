@@ -1,6 +1,6 @@
 var img = new Image();
 img.crossOrigin = 'anonymous';
-img.src = './JujuXTzuYang.jpg';
+img.src = './rhino.jpg';
 var Scanvas = document.getElementById('Scanvas');
 var Sctx = Scanvas.getContext('2d');
 
