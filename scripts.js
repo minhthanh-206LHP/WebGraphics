@@ -3,7 +3,7 @@ window.onload = function(){
     img.onload = function(){
         invertColor(this);
     };
-    img.src = "brim.png";
+    img.src = "JujuXTzuYang.jpg";
 };
 
 function invertColor(img)
