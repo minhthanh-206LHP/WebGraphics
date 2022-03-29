@@ -11,7 +11,7 @@ var NeoCtx = NeoCanvas.getContext('2d');
 img.onload = function() {
   Sctx.drawImage(img, 0, 0);
   img.style.display = 'none';
-  invertColor(this);
+  gray(img);
 };
 
 
@@ -24,6 +24,18 @@ function invertColor(img) {
 		data[i + 1] = 255 - data[i+1];
 		data[i + 2] = 255 - data[i+2];
 		data[i + 3] = 255;
+	}
+	NeoCtx.putImageData(imageData,0,0);
+}
+
+function gray(img) {
+	var imageData = Sctx.getImageData(0,0,img.width,img.height);
+	var data = imageData.data;
+	for (var i = 0; i < data.length; i += 4) {
+		vat lightness = parseInt((data[i] + data[i+1] + data[i+2]) / 3);
+		data[i] = lightness;
+		data[i+1] = lightness;
+		data[i+2] = lightness;
 	}
 	NeoCtx.putImageData(imageData,0,0);
 }
