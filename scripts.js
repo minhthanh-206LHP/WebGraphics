@@ -11,6 +11,7 @@ var NeoCtx = NeoCanvas.getContext('2d');
 img.onload = function() {
   Sctx.drawImage(img, 0, 0);
   img.style.display = 'none';
+  invertColor(this);
 };
 
 
