@@ -46,11 +46,8 @@ function edgeSobel(imageData) {
 	var data = imageData.data;
 	var row = img.width*4;
 	for (var i = row + 4; i < data.length - row - 4; i += 4) {
-		var gradX = -data[i - row - 4] + data[i - row + 4]
-			-2 * data[i - 4] + 2 * data[i + 4]
-			-data[i + row - 4] + data[i + row + 4];
-		var gradY = -data[i - row - 4] -2*data[i - row] - data[i - row + 4]
-			+data[i + row - 4] +2*data[i + row] + data[i + row + 4];
+		var gradX = -data[i - row - 4] + data[i - row + 4] -2 * data[i - 4] + 2 * data[i + 4] -data[i + row - 4] + data[i + row + 4];
+		var gradY = -data[i - row - 4] - 2*data[i - row] - data[i - row + 4] + data[i + row - 4] + 2*data[i + row] + data[i + row + 4];
 
 		var absX = Math.abs(gradX);
 		var absY = Math.abs(gradY);
