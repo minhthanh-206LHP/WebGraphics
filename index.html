@@ -89,7 +89,7 @@
 					var r = pixelAt(x,y,0);
 					var g = pixelAt(x,y,1);
 					var b = pixelAt(x,y,2);
-					var avg = (r+b+g) /3 ;
+					var avg = (3*r + 4*g + b) >>> 3;
 					grayscaleData.push (avg,avg,avg,255);
 				}
 			}
