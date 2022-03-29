@@ -93,8 +93,49 @@
 					grayscaleData.push (avg,avg,avg,255);
 				}
 			}
-			var grayscaleImageData = toImageData(grayscaleData,width,height);
-			c.putImageData(grayscaleImageData,0,0);
+			var kernelX = [
+				[-1,0,1],
+				[-2,0,2],
+				[-1,0,1]
+			];
+			var kernelY = [
+				[-1,-2,-1],
+				[0,0,0],
+				[1,2,1]
+			];
+			var sobelData = [];
+
+			pixelAt = bindPixelAt(grayscaleData);
+
+			for (var y = 0; y < height; y++){
+				for (var x = 0; x < width; x++){
+					var pixelX = (
+						(kernelX[0][0] * pixelAt(x - 1, y - 1)) +
+						(kernelX[0][1] * pixelAt(x, y - 1)) +
+						(kernelX[0][2] * pixelAt(x + 1, y - 1)) +
+						(kernelX[1][0] * pixelAt(x - 1, y)) +
+						(kernelX[1][1] * pixelAt(x, y)) +
+						(kernelX[1][2] * pixelAt(x + 1, y)) +
+						(kernelX[2][0] * pixelAt(x - 1, y + 1)) +
+						(kernelX[2][1] * pixelAt(x, y + 1)) +
+						(kernelX[2][2] * pixelAt(x + 1, y + 1))
+					);
+
+					var pixelY = (
+						(kernelY[0][0] * pixelAt(x - 1, y - 1)) +
+						(kernelY[0][1] * pixelAt(x, y - 1)) +
+						(kernelY[0][2] * pixelAt(x + 1, y - 1)) +
+						(kernelY[1][0] * pixelAt(x - 1, y)) +
+						(kernelY[1][1] * pixelAt(x, y)) +
+						(kernelY[1][2] * pixelAt(x + 1, y)) +
+						(kernelY[2][0] * pixelAt(x - 1, y + 1)) +
+						(kernelY[2][1] * pixelAt(x, y + 1)) +
+						(kernelY[2][2] * pixelAt(x + 1, y + 1))
+					);
+					var magitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY)) >>> 0;
+					sobelData.push(magitude,magitude,magitude,255);
+				}
+			}
 
 			function toImageData(data, width, height) {
 				if (typeof ImageData === 'function' && Object.prototype.toString.call(data) === '[object Uint16Array]') {
@@ -124,7 +165,8 @@
 				data: data
 				};
 			}
-
+			var sobelImageData = toImageData(sobelData,width,height);
+			c.putImageData(sobelImageData,0,0);
 			setTimeout(function(){draw(v,c,bc,w,h);},0);
 		}
 
