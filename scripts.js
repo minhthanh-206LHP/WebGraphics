@@ -54,7 +54,7 @@ function edgeSobel(imageData) {
 
 		var absX = Math.abs(gradX);
 		var absY = Math.abs(gradY);
-		var sum = absX ;
+		var sum = absY ;
 		if (sum > 255) {
 			sum = 255;
 		}
