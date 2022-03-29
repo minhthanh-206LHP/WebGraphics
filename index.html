@@ -42,6 +42,8 @@
 			var v = document.getElementById('v');
 			var canvas = document.getElementById('videoCanvas');
 			var context = canvas.getContext('2d');
+			var back = document.createElement('canvas');
+			var backcontext = back.getContext('2d');
 
 			var cw = Math.floor(canvas.clientWidth / 100);
 			var ch = Math.floor(canvas.clientHeight / 100);
@@ -49,7 +51,13 @@
 			canvas.height = ch;
 
 			v.addEventListener('play',function(){
-				draw(this,context,cw,ch);
+				cw = v.clientWidth;
+				ch = v.clientHeight;
+				canvas.width = cw;
+				canvas.height = ch;
+				back. width = cw;
+				back.height = ch;
+				draw(v,context,backcontext,cw,ch);
 			},false);
 		},false);
 
