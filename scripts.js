@@ -38,4 +38,5 @@ function gray(img) {
 		data[i+2] = lightness;
 	}
 	NeoCtx.putImageData(imageData,0,0);
+	return imageData;
 }
