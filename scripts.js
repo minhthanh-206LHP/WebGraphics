@@ -61,6 +61,7 @@ function edgeSobel(imageData) {
 		if (sum < 0) {
 			sum = 0;
 		}
+		sum = 255 - sum;
 		data[i] = sum;
 		data[i+1]=sum;
 		data[i+2]=sum;
