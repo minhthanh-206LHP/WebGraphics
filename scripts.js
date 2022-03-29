@@ -8,6 +8,6 @@ img.onload = function() {
   img.style.display = 'none';
 };
 
-var Neo-canvas = document.getElementById('Ncanvas');
-var Neo-ctx = Neo-canvas.getContext('2d');
-Neo-ctx.drawImage(img,0,0);
+var NeoCanvas = document.getElementById('Ncanvas');
+var NeoCtx = NeoCanvas.getContext('2d');
+NeoCtx.drawImage(img,0,0);
