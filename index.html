@@ -120,7 +120,7 @@
 						(kernelX[2][1] * pixelAt(x, y + 1)) +
 						(kernelX[2][2] * pixelAt(x + 1, y + 1))
 					);
-
+					pixelX = Math.abs(pixelX);
 					var pixelY = (
 						(kernelY[0][0] * pixelAt(x - 1, y - 1)) +
 						(kernelY[0][1] * pixelAt(x, y - 1)) +
@@ -132,7 +132,11 @@
 						(kernelY[2][1] * pixelAt(x, y + 1)) +
 						(kernelY[2][2] * pixelAt(x + 1, y + 1))
 					);
+					pixelY = Math.abs(pixelY);
 					var magitude = (pixelX + pixelY) >>> 1;
+					if (magitude > 255){
+						magitude = 255;
+					}
 					sobelData.push(magitude,magitude,magitude,255);
 				}
 			}
