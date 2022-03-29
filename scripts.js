@@ -4,6 +4,7 @@ window.onload = function(){
         invertColor(this);
     };
     img.src = "JujuXTzuYang.jpg";
+    img.crossOrigin = 'anonymous';
 };
 
 function invertColor(img)
