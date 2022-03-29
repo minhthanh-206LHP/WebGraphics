@@ -11,7 +11,7 @@ var NeoCtx = NeoCanvas.getContext('2d');
 img.onload = function() {
   Sctx.drawImage(img, 0, 0);
   img.style.display = 'none';
-  edgeSobel(gray(img));
+  edgeSobel(this);
 };
 
 
@@ -41,11 +41,13 @@ function gray(img) {
 	return imageData;
 }
 
-function edgeSobel(imageData) {
-//	var imageData = Sctx.getImageData(0,0,img.width,img.height);
+function edgeSobel(img) {
+	var imageData = Sctx.getImageData(0,0,img.width,img.height);
+	var dstImageData = NeoCtx.createImageData(img.width,img.height);
 	var data = imageData.data;
-	var row = img.width*4;
-	for (var i = row + 4; i < data.length - row - 4; i += 4) {
+	var dstData = dstImageData.data;
+	var row = img.width * 4;
+	for (var i = row + 4; i <= data.length - row - 4; i += 4) {
 		var gradX = -data[i - row - 4] + data[i - row + 4] -2 * data[i - 4] + 2 * data[i + 4] -data[i + row - 4] + data[i + row + 4];
 		var gradY = -data[i - row - 4] - 2*data[i - row] - data[i - row + 4] + data[i + row - 4] + 2*data[i + row] + data[i + row + 4];
 
@@ -59,9 +61,9 @@ function edgeSobel(imageData) {
 			sum = 0;
 		}
 		sum = 255 - sum;
-		data[i] = sum;
-		data[i+1]=sum;
-		data[i+2]=sum;
+		dstData[i] = sum;
+		dstData[i+1]=sum;
+		dstData[i+2]=sum;
 	}
-	NeoCtx.putImageData(imageData,0,0);
+	NeoCtx.putImageData(dstImageData,0,0);
 }
